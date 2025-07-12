@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Floating Quotes</title>
+  <style>
+    body {
+      background-color: #001f3f;
+      color: white;
+      font-family: 'Courier New', monospace;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+    }
+    #quoteBox {
+      font-size: 1.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #00ffff;
+    }
+  </style>
+</head>
+<body>
+  <div id="quoteBox">Loading quote...</div>
+
+  <script>
+    const quotes = [
+      "You’re a walking dua come true 🌸",
+      "Kindness is your natural language.",
+      "Even the stars envy your calm light ✨",
+      "A strong heart wrapped in softness 💖",
+      "You’re not just rare. You’re irreplaceable."
+    ];
+    let idx = 0;
+    function showQuote() {
+      document.getElementById("quoteBox").innerText = quotes[idx];
+      idx = (idx + 1) % quotes.length;
+    }
+    showQuote();
+    setInterval(() => {
+      showQuote();
+    }, 4000);
+
+    setTimeout(() => {
+      window.location.href = "loveyou.html";
+    }, 20000);
+  </script>
+</body>
+</html>

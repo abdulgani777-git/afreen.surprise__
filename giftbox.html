@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift For You</title>
+  <style>
+    body {
+      background-color: #fff4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: sans-serif;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      background: pink;
+      border: 4px solid red;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .box:hover {
+      transform: scale(1.1);
+    }
+    .lid {
+      width: 200px;
+      height: 30px;
+      background: red;
+      position: absolute;
+      top: -30px;
+      left: 0;
+    }
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #cc0055;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" onclick="openGift()">
+    <div class="lid"></div>
+  </div>
+  <div class="message" id="giftMsg">
+    “The most beautiful thing I found was... You.” 💝
+  </div>
+
+  <script>
+    function openGift() {
+      document.getElementById("giftMsg").style.display = "block";
+      setTimeout(() => {
+        window.location.href = "quote.html";
+      }, 4000);
+    }
+  </script>
+</body>
+</html>

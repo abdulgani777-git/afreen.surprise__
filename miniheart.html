@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pop the Hearts 💖</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to top, #ffdee9, #b5fffc);
+      font-family: 'Comic Sans MS', cursive;
+    }
+    h1 {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ff3399;
+      font-size: 2rem;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px 20px;
+      border-radius: 15px;
+      z-index: 10;
+    }
+    .heart {
+      width: 40px;
+      height: 40px;
+      background: red;
+      position: absolute;
+      clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0 35%);
+      animation: floatUp 5s linear forwards;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    #msgBox {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      padding: 15px 25px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      display: none;
+      color: #ff0066;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<h1>Pop 5 Hearts to Unlock Your Surprise! 💖</h1>
+<div id="msgBox">“You unlocked this because you're full of love!” 💖</div>
+
+<script>
+  let popped = 0;
+  const msgBox = document.getElementById("msgBox");
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+
+    heart.addEventListener("click", () => {
+      if (!heart.classList.contains("popped")) {
+        popped++;
+        heart.classList.add("popped");
+        heart.remove();
+
+        if (popped === 5) {
+          msgBox.style.display = "block";
+          setTimeout(() => {
+            window.location.href = "giftbox.html";
+          }, 3000);
+        }
+      }
+    });
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 600);
+</script>
+
+</body>
+</html>
